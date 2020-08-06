@@ -24,13 +24,24 @@ public class PathController : MonoBehaviour
     {
         drawPath();
         square = gameObject.transform.GetChild(0).gameObject;
-        move(this.square);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
+        var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit Hit;
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (Physics.Raycast(ray, out Hit) && Hit.collider.tag == ("tagSquare"))
+            {
+                Debug.Log("Click Detected");
+                move(this.square);
+            }
+        }
     }
     public void move(GameObject square)
     {
