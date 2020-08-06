@@ -25,30 +25,20 @@ public class LevelEditor : MonoBehaviour
 [System.Serializable]
 class gameEditor : Editor
 {
-    private GameObject square;
-
-    int waypointNumber;
-    //Check Create button for prevent waypoint system
-    private bool checkWaypointMode =true;
-    //
-
+    private Object square;
 
     public override void OnInspectorGUI()
     {
       
         //defination
         LevelEditor script = (LevelEditor)target;
-        //How Many Waypoint will Crate?
-        GUILayout.Label("Number Of Waypoint:"+waypointNumber);
-        waypointNumber =EditorGUILayout.IntSlider(waypointNumber, 1,25);
-        //
+        
+        //Its a little trick for use prefab file in Editor screen.Drag your prefab file as a object
         square = EditorGUILayout.ObjectField(square, typeof(Object), true);
-        //Crate Square Button
-        if (GUILayout.Button("Create Square", GUILayout.MinWidth(100), GUILayout.Width(100)) && checkWaypointMode==true)
+        //Crate Square
+        if (GUILayout.Button("Create Square", GUILayout.MinWidth(100), GUILayout.Width(100)))
         {
-            checkWaypointMode = false;
-
-
+            Instantiate(square, new Vector3(0, 0, 0), Quaternion.Euler(0,0,45));
         }
      
 
