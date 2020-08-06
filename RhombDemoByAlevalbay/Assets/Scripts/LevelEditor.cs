@@ -25,20 +25,23 @@ public class LevelEditor : MonoBehaviour
 [System.Serializable]
 class gameEditor : Editor
 {
-    private Object square;
+    private Object path;
+    private int pathCounter=0;
 
     public override void OnInspectorGUI()
     {
-      
+        
         //defination
         LevelEditor script = (LevelEditor)target;
         
         //Its a little trick for use prefab file in Editor screen.Drag your prefab file as a object
-        square = EditorGUILayout.ObjectField(square, typeof(Object), true);
+        path = EditorGUILayout.ObjectField(path, typeof(Object), true);
         //Crate Square
-        if (GUILayout.Button("Create Square", GUILayout.MinWidth(100), GUILayout.Width(100)))
+        if (GUILayout.Button("Create Path", GUILayout.MinWidth(100), GUILayout.Width(100)))
         {
-            Instantiate(square, new Vector3(0, 0, 0), Quaternion.Euler(0,0,45));
+            pathCounter++;
+            Instantiate(path, new Vector3(0, 0, 0), Quaternion.Euler(0,0,0));
+            path.name=(pathCounter+"th path");
         }
      
 

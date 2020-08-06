@@ -8,9 +8,10 @@ TagManager:
   - Green
   - Blue
   - Block
-  - waypointArray
-  - waypoint
-  - finalWaypoint
+  - tagWaypoint
+  - tagFinalWaypoint
+  - tagFirstWayPoint
+  - tagSquare
   layers:
   - Default
   - TransparentFX

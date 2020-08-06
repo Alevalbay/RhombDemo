@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6908456570505686497}
+  - component: {fileID: -458485749644446038}
   m_Layer: 0
   m_Name: Path
   m_TagString: Untagged
@@ -32,6 +33,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-458485749644446038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5336388862971639304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5b28f3e826ffa0499755c5a4432db50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wayPoints:
+  - {fileID: 0}
+  waypointsVector3: []
 --- !u!1001 &1437462699338983722
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43,6 +59,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Square
+      objectReference: {fileID: 0}
+    - target: {fileID: 7589778376901518005, guid: 38fe41e32928ac2449a010738e965e3f,
+        type: 3}
+      propertyPath: m_TagString
+      value: tagSquare
       objectReference: {fileID: 0}
     - target: {fileID: 7589778376901518007, guid: 38fe41e32928ac2449a010738e965e3f,
         type: 3}
@@ -118,6 +139,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FinalWayPoint
+      objectReference: {fileID: 0}
+    - target: {fileID: 4518140864989723314, guid: 4abeec83c0448774f8bd5a3c4b58f6b9,
+        type: 3}
+      propertyPath: m_TagString
+      value: tagFinalWaypoint
       objectReference: {fileID: 0}
     - target: {fileID: 4518140864989723308, guid: 4abeec83c0448774f8bd5a3c4b58f6b9,
         type: 3}
