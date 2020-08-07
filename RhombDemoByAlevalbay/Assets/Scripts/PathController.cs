@@ -20,6 +20,8 @@ public class PathController : MonoBehaviour
     private GameObject finalWaypoint;
     //
     private GameObject square;
+    //
+    private LineRenderer myLineRenderer;
     void Start()
     {
         drawPath();
@@ -46,9 +48,10 @@ public class PathController : MonoBehaviour
     public void move(GameObject square)
     {
        
-        Debug.Log(waypointsVector3.Length);
         square.transform.DOPath(waypointsVector3, (0.5f*waypointsVector3.Length), PathType.CatmullRom, gizmoColor: Color.blue);
-   
+        myLineRenderer.DOColor(new Color2(Color.white, Color.white), new Color2(Color.green, Color.black), 1);
+
+
     }
     public void createWaypoint(int waypointNumber)
     {
@@ -87,6 +90,27 @@ public class PathController : MonoBehaviour
         
     }
 
+    //if true thats true function will create straight line case of false creates curve line
+    public void createLine(bool straightOrCurve)
+    {
+        GameObject line;
+        string lineTag;
+        if(straightOrCurve==true)
+        {
+            Debug.Log("True Döndü");
+            lineTag = "tagStraightLine";
+        }
+        else
+        {
+            Debug.Log("False Döndü");
+            lineTag = "tagCurveLine";
+        }
+        Debug.Log("Line tag:" + lineTag);
+        line= GameObject.FindGameObjectWithTag(lineTag);
+        line=Instantiate(line, new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0));
+        line.transform.SetParent(gameObject.GetComponent<Transform>());
+    }
+
     
 }
 
@@ -114,6 +138,15 @@ class waypointEditor:Editor
         if (GUILayout.Button("AddWayPoint"))
         {
             script.createWaypoint(numberOfWaypoint);
+        }
+
+        if (GUILayout.Button("AddStraightLine", GUILayout.MinWidth(100), GUILayout.Width(100)))
+        {
+            script.createLine(true);
+        }
+        if(GUILayout.Button("AddCurveLine", GUILayout.MinWidth(100), GUILayout.Width(100)))
+        {
+            script.createLine(false);
         }
 
 
