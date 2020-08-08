@@ -20,7 +20,6 @@ public class FadeLines : MonoBehaviour
     {
         if ((collision.gameObject.tag == "tagStraightLine" || collision.gameObject.tag == "tagCurveLine") && collision.transform.parent == gameObject.transform.parent)
         {
-            Debug.Log("hello there1");
             SpriteRenderer sprite;
             sprite = collision.GetComponent<SpriteRenderer>();
             sprite.DOFade(0, 1.0f);

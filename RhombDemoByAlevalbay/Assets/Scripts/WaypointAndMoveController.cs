@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WaypointController : MonoBehaviour
+public class WaypointAndMoveController : MonoBehaviour
 {
     //Holds Waypoints
     public List<GameObject> waypointList;
@@ -34,8 +34,9 @@ public class WaypointController : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit, 100))
             {
+                
                 // whatever tag you are looking for on your game object
-                if (hit.collider.tag == "tagClickObject")
+                if (hit.collider.tag == "tagClickObject" && gameObject.transform.parent==hit.collider.transform.parent)
                 {
                     transform.DOPath(waypointsVectors, (2f), PathType.CatmullRom);
                 }

@@ -1,13 +1,16 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class CheckEnding : MonoBehaviour
+public class IsPathComplete : MonoBehaviour
 {
-    public bool isFinished = false;
+    //Checks path is completed
+    public bool isPathComplete;
     void Start()
     {
-        
+        isPathComplete = false;
     }
 
     // Update is called once per frame
@@ -15,11 +18,12 @@ public class CheckEnding : MonoBehaviour
     {
         
     }
+    //Works On Collide Square
     private void OnTriggerEnter(Collider other)
     {
         if((other.transform.tag==("tagClickObject")) && (other.transform.parent==gameObject.transform.parent))
         {
-            isFinished = true;
+            isPathComplete = true;
         }
     }
 }

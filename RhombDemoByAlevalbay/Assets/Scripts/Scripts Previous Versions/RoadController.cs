@@ -29,6 +29,11 @@ public class RoadController : MonoBehaviour
             sprite=collision.GetComponent<SpriteRenderer>();
             sprite.DOFade(0, 0.5f);
         }
+
+        if(collision.gameObject.tag=="tagClickObject")
+        {
+            Application.Quit();
+        }
     }
 
 }
