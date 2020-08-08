@@ -13,32 +13,44 @@ public class LevelController : MonoBehaviour
 
     private int intCurrentLevel=0;
 
+    private GameObject[] pathIsComplete;
+
+    private bool tempIsComplete;
+
+    private 
 
 
     void Start()
     {
     }
 
-    // Update is called once per frame
     void Update()
     {
-     
+       
     }
 
 
 
     public void NextLevel()
     {
-        intCurrentLevel++;
+        //Works Before new Level
         Destroy(currentLevel);
-        Instantiate(levels[intCurrentLevel], new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0));
+        intCurrentLevel++;
+        currentLevel =Instantiate(levels[intCurrentLevel], new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0));
+
+        //Works after Instantiate New Level
+        pathIsComplete = GameObject.FindGameObjectsWithTag("tagEndingPoint");
+      
     }
 
-    public void RestartLevel(GameObject thisLevel)
+    public void RestartLevel( )
     {
         Debug.Log("Destroying Level");
-        Destroy(thisLevel);
-        Instantiate(levels[intCurrentLevel], new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0));
+        Destroy(currentLevel);
+        currentLevel=Instantiate(levels[intCurrentLevel], new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0));
+        
     }
+
+
    
 }

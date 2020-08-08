@@ -21,7 +21,7 @@ public class BlockCollision : MonoBehaviour
         if ((collision.transform.tag == ("tagBlock")) && (collision.transform.parent == gameObject.transform.parent))
         {
             Debug.Log("Restarting");
-            lvlController.GetComponent<LevelController>().RestartLevel(gameObject.transform.parent.parent.gameObject);
+            lvlController.GetComponent<LevelController>().RestartLevel();
         }
     }
 }
