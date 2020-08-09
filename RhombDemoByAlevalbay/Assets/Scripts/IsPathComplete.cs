@@ -8,29 +8,27 @@ public class IsPathComplete : MonoBehaviour
 {
     //Checks path is completed
     private bool isTriggered = false;
+
     public bool isPathComplete;
+
+    //Audio File works on Path Complete
+    private AudioSource pathCompleteSound;
     void Start()
     {
+        pathCompleteSound = gameObject.GetComponent<AudioSource>();
         isPathComplete = false;
-   
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     //Works On Collide Square
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Collision Detected");
         //First check for square collide end point
         //Second check for are they in same level object kit
         //Third check for if this function works every time "CheckEndPointsOnLevel" works "EndPointKit" times for exapmle at second level this function trigger twice and jump 4.th level instead of 3
         if ((other.transform.tag == ("tagClickObject")) && (other.transform.parent == gameObject.transform.parent) && ( isTriggered == false))
         {
-            Debug.Log("This Function Triggered");
             isPathComplete = true;
+            pathCompleteSound.Play();
             GameObject.FindGameObjectWithTag("tagLevel").GetComponent<IsLevelComplete>().CheckEndPointsOnLevel();
         }
     }

@@ -5,23 +5,26 @@ using UnityEngine;
 
 public class BlockScript : MonoBehaviour
 {
-
+    //Bool value for block status (pen/close) at start
     [SerializeField]
     private bool blockStatusAtStart;
 
+    //Bool value for block status (pen/close) at game on
+
     private bool blockStatus;
 
-    public GameObject destinationPoint;
+    //GameObject EndPoint
+    public GameObject endPoint;
     void Start()
     { 
+        //Calls ControlBlock function for arrange block
         blockStatus = ControlBlock(blockStatusAtStart);
     }
 
-    // Update is called once per frame
     void Update()
     {
 
-        //
+        //If i clicked square all blocks change status
         if (Input.GetMouseButtonDown(0))
         {
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -38,14 +41,15 @@ public class BlockScript : MonoBehaviour
             }
         }
 
-        if (destinationPoint.GetComponent<IsPathComplete>().isPathComplete == true)
+        //When path is complete destroy block object
+        if (endPoint.GetComponent<IsPathComplete>().isPathComplete == true)
         {
             Destroy(gameObject);
         }
     }
 
     
-
+    //Arrange block's component Spriterenderer and BoxCollider
     public bool ControlBlock(bool blockStatus)
     {
         if (blockStatus == true)

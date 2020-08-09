@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BlockCollision : MonoBehaviour
 {
+    //Game Object for levelController function
     private GameObject lvlController;
 
     void Start()
@@ -17,7 +18,7 @@ public class BlockCollision : MonoBehaviour
     }
     private void OnTriggerEnter(Collider collision)
     {
-
+        //If square hits blocks and square and block are sibling function works
         if ((collision.transform.tag == ("tagBlock")) && (collision.transform.parent == gameObject.transform.parent))
         {
             Debug.Log("Restarting");

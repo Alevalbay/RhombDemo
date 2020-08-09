@@ -4,34 +4,22 @@ using UnityEngine;
 
 public class IsLevelComplete : MonoBehaviour
 {
+    //Hold Levels Ending Point For Next Level function
     public GameObject[] levelEndPoınts;
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    //Check EndingPoints
     public void CheckEndPointsOnLevel()
     {
-        Debug.Log("CheckEndPointsOnLevel çalışıyor");
-
+        //Checks all Points if all point isPathComplete==true level would be completed if any of them false it wont work
         for (int i=0;i<levelEndPoınts.Length;i++)
         {
-            Debug.Log("Döngüye Giriliyor:"+levelEndPoınts[i].transform.GetComponent<IsPathComplete>().isPathComplete);
-
+            
             if (levelEndPoınts[i].transform.GetComponent<IsPathComplete>().isPathComplete == false)
             {
-                Debug.Log("Döngüden Çıkılıyor");
                 break;
             }
             if(i==(levelEndPoınts.Length-1))
             {
-                Debug.Log("Level Tamamlandı");
                 GameObject.FindGameObjectWithTag("tagLevelController").GetComponent<LevelController>().NextLevel();
             }
         }
