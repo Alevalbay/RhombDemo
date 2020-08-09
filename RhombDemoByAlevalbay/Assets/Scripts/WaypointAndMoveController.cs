@@ -14,8 +14,15 @@ public class WaypointAndMoveController : MonoBehaviour
     
     //DoTween path only accepts Vector3
     private Vector3[] waypointsVectors;
+
+    //For calling Restrat Function
+    private GameObject lvlController;
     void Start()
     {
+        //For calling restart function
+        lvlController = GameObject.FindGameObjectWithTag("tagLevelController");
+
+
         waypointsVectors = new Vector3[waypointList.Count];
         waypointArray = waypointList.ToArray();
         for(int i=0 ;i<=waypointArray.Length-1;i++)
@@ -44,7 +51,20 @@ public class WaypointAndMoveController : MonoBehaviour
         }
     }
 
-  
+    //If Square collides other square
+    private void OnTriggerEnter(Collider collision)
+    {
+        //First One Checks Collision tag
+        //Second One Checks sibling object
+        //Third One is if Ending Point "path Completed" the collision result would be Restart 
+        if ((collision.transform.tag == ("tagEndingPoint")) && (collision.transform.parent != gameObject.transform.parent) && (collision.transform.GetComponent<IsPathComplete>().isPathComplete==true))
+        {
+            Debug.Log("Restarting");
+            lvlController.GetComponent<LevelController>().RestartLevel();
+        }
+    }
+
+
 
 
 }

@@ -48,17 +48,17 @@ public class BlockScript : MonoBehaviour
 
     public bool ControlBlock(bool blockStatus)
     {
-        if (blockStatus == true)
+        if (blockStatus == false)
         {
             gameObject.GetComponent<SpriteRenderer>().DOFade(0, 0.1f);
             gameObject.GetComponent<BoxCollider>().enabled = false;
-            return false;
+            return true;
         }
         else
         {
             gameObject.GetComponent<SpriteRenderer>().DOFade(1, 0.1f);
             gameObject.GetComponent<BoxCollider>().enabled = true;
-            return true;
+            return false;
         }
     }
     

@@ -7,18 +7,12 @@ using UnityEngine.UI;
 public class IsPathComplete : MonoBehaviour
 {
     //Checks path is completed
+    private bool isTriggered = false;
     public bool isPathComplete;
-
-    //
-    private GameObject levelController;
-
-    //
-    private GameObject[] siblingEndingPoint;
     void Start()
     {
         isPathComplete = false;
-        siblingEndingPoint = GameObject.FindGameObjectsWithTag("tagEndingPoint");
-        levelController = GameObject.FindGameObjectWithTag("tagLevelController");
+   
     }
 
     // Update is called once per frame
@@ -29,26 +23,17 @@ public class IsPathComplete : MonoBehaviour
     //Works On Collide Square
     private void OnTriggerEnter(Collider other)
     {
-        if((other.transform.tag==("tagClickObject")) && (other.transform.parent==gameObject.transform.parent))
+        Debug.Log("Collision Detected");
+        //First check for square collide end point
+        //Second check for are they in same level object kit
+        //Third check for if this function works every time "CheckEndPointsOnLevel" works "EndPointKit" times for exapmle at second level this function trigger twice and jump 4.th level instead of 3
+        if ((other.transform.tag == ("tagClickObject")) && (other.transform.parent == gameObject.transform.parent) && ( isTriggered == false))
         {
+            Debug.Log("This Function Triggered");
             isPathComplete = true;
-            IsAllComplete();
+            GameObject.FindGameObjectWithTag("tagLevel").GetComponent<IsLevelComplete>().CheckEndPointsOnLevel();
         }
     }
 
-    public void IsAllComplete()
-    {
-        for (int i = 0; i < siblingEndingPoint.Length; i++)
-        {
-            Debug.Log("Arıyor");
-            if (siblingEndingPoint[i].GetComponent<IsPathComplete>().isPathComplete == false)
-            {
-                break;
-            }
-            else
-            {
-                GameObject.FindGameObjectWithTag("tagLevelController").GetComponent<LevelController>().NextLevel();
-            }
-        }
-    }
+
 }

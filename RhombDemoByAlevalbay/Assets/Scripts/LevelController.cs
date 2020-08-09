@@ -11,11 +11,7 @@ public class LevelController : MonoBehaviour
     public  GameObject currentLevel;
 
 
-    private int intCurrentLevel=0;
-
-    private GameObject[] pathIsComplete;
-
-    private bool tempIsComplete;
+    private int intCurrentLevel = 0;
 
     private 
 
@@ -35,22 +31,22 @@ public class LevelController : MonoBehaviour
     {
         //Works Before new Level
         Destroy(currentLevel);
+
         intCurrentLevel++;
         currentLevel =Instantiate(levels[intCurrentLevel], new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0));
-
-        //Works after Instantiate New Level
-        pathIsComplete = GameObject.FindGameObjectsWithTag("tagEndingPoint");
-      
+       
     }
 
     public void RestartLevel( )
     {
-        Debug.Log("Destroying Level");
+
         Destroy(currentLevel);
         currentLevel=Instantiate(levels[intCurrentLevel], new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0));
-        
+       
+
+
     }
 
 
-   
+
 }
